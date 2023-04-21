@@ -16,4 +16,5 @@ app.use(express.json());
 
 app.use('/api/user',authRoute);
 app.use('/api/posts',postRoute);
+app.use("/",authRoute);
 app.listen(3000,()=>console.log('Server is Running'));

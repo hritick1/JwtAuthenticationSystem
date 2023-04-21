@@ -56,6 +56,14 @@ router.post('/login',async(req,res)=>{
 
            res.send('Logged In!');
 
+});
+router.get("/",(req,res)=>{
+      res.send("Welcome to Jwt Authentication System ,Use Postman to register or login");
+      res.send("Use: /api/user/register -to register");
+      res.send("Use: /api/user/login -to login");
+      res.send("Use your jwt token in header to get data using: /api/posts -to login");
+
+      
 })
 
 
