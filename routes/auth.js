@@ -54,7 +54,7 @@ router.post('/login',async(req,res)=>{
            const token=jwt.sign({_id: user._id},process.env.TOKEN_SECRET);
            console.log(token);
            res.cookie('myCookie', token, {
-            domain: 'https://course-app-jet.vercel.app/',
+            domain: 'https://course-app.onrender.com',
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
     maxAge: 60 * 60 * 1000 // Expires in 1 hour
