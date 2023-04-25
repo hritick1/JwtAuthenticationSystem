@@ -52,12 +52,33 @@ router.post('/login',async(req,res)=>{
 
            //create and assign jwt token
            const token=jwt.sign({_id: user._id},process.env.TOKEN_SECRET);
-           res.header('auth-token',token).send(token);
+           console.log(token);
+           res.cookie('myCookie', token, {
+            domain: 'https://course-app-jet.vercel.app/',
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+    maxAge: 60 * 60 * 1000 // Expires in 1 hour
+          });
+            res.send(token);
+//   res
+//     .cookie("access_token", token, {
+//       domain: 'localhost',
+//       path: '/',
+//       httpOnly: true,
+//       secure: true,
+//       sameSite: 'strict'
+//     })
+//     .status(200)
+//     .json({ message: "Logged in successfully 😊 👌" });
+//       //      res.header('auth-token',token).send(token);
+
+//       console.log(req.cookies.access_token);
 
 });
 router.get("/",(req,res)=>{
       res.send("Welcome to Jwt Authentication System ,Use Postman to register or login");
-})
+});
+
 
 
 
